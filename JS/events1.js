@@ -2,7 +2,7 @@
  При нажатии Ctrl + E, вместо div появляется textarea с тем же текстом, который теперь можно редактировать. 
  При нажатии Ctrl + , вместо textarea появляется div с уже измененным текстом. Не забудьте выключить поведение
   по умолчанию для этих сочетаний клавиш.*/
-/*let div = document.getElementById("div");
+let div = document.getElementById("div");
   let textarea=document.createElement("textarea");
 document.addEventListener('keydown', function(event) {
     
@@ -16,7 +16,7 @@ if (event.ctrlKey  &&  event.code=="KeyE") { //правильно?
   document.body.appendChild(textarea);
 }
 });
-document.addEventListener('keydown', function(event) { // работает неправильно
+document.addEventListener('keydown', function(event) { 
   
   if (event.ctrlKey  &&  event.code=="NumpadAdd") {
     event.preventDefault();
@@ -24,13 +24,13 @@ document.addEventListener('keydown', function(event) { // работает не�
   
     textarea.setAttribute("style", "display: none");
     div.setAttribute("style", "width: 300px; height: 200px;");
-    div.innerText=textarea.innerText;
+    div.innerText=textarea.value;
     
 
   }
 })
-console.log(div);*/
-let container = document.getElementById("container");
+console.log(div);
+/*let container = document.getElementById("container");
 let div = document.getElementById("div");
 let text= div.innerText;
 document.addEventListener("keydown", function(event) {
@@ -43,4 +43,4 @@ document.addEventListener("keydown", function(event) {
     event.preventDefault();
     console.log(event); 
     container.innerHTML = `<div> ${text} </div>`  ;//не знаю как сохранить измененный текст
-}});
+}});*/
