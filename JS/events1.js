@@ -39,11 +39,21 @@ console.log(div);*/
  console.log(tableArr);
  console.log(tableArr[1].cells[1].innerText);
  
- let tableArrSotr = tableArr.sort((a, b) =>( 
- 
-  a.cells[0].innerText>b.cells[0].innerText ? 1:-1
-     
- )
+ let tableArrSotr = tableArr.sort((a, b) =>{
+   if (typeof Number(a.cells[1].innerText)=="number") {
+    if (a.cells[1].innerText-b.cells[1].innerText>0)
+  return 1;
+  else if (a.cells[1].innerText-b.cells[1].innerText<0)   
+  return -1;
+  else return 0;
+   }
+ else
+  if (a.cells[1].innerText>b.cells[1].innerText)
+  return 1;
+  else if (a.cells[1].innerText<b.cells[1].innerText)   
+  return -1;
+  else return 0;
+  }
  );
  console.log(tableArrSotr);
  document.querySelector("table").tBodies[0].append(...tableArr);
