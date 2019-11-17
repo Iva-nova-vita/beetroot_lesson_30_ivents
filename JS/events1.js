@@ -33,22 +33,19 @@ console.log(div);*/
 
 /*2. Создать HTML-страницу с большой таблицей. При клике по заголовку колонки, необходимо отсортировать данные по этой колонке.
  Учтите, что числовые значения должны сортироваться как числа, а не как строки*/
+ let table = document.querySelector("table").rows;
+ console.log(table);
+ let tableArr = Array.from(table).slice(1);
+ console.log(tableArr);
+ console.log(tableArr[1].cells[1].innerText);
+ 
+ let tableArrSotr = tableArr.sort((a, b) =>( 
+ 
+  a.cells[0].innerText>b.cells[0].innerText ? 1:-1
+     
+ )
+ );
+ console.log(tableArrSotr);
+ document.querySelector("table").tBodies[0].append(...tableArr);
+ console.log(tableArrSotr);
 
-let table = document.querySelector("table").rows;
-console.log(table);
-let tableArr = Array.from(table);
-console.log(tableArr);
-console.log(document.querySelector("table").rows[1].cells[1]);
-
-let tableArrSotr = tableArr.sort((a, b) => {  //не увеличивает i
-  for (i = 1; i < tableArr.length; i++) {
-    a = document.querySelector("table").rows[i].cells[1].innerText;
-    b = document.querySelector("table").rows[i++].cells[1].innerText;
-    a - b;
-    if (a - b > 1) return 1;
-    else if (a - b < 1) return -1;
-    else return 0;
-  }
-});
-
-console.log(tableArrSotr);
