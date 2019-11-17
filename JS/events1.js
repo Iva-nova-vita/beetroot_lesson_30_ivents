@@ -34,25 +34,30 @@ console.log(div);*/
 /*2. Создать HTML-страницу с большой таблицей. При клике по заголовку колонки, необходимо отсортировать данные по этой колонке.
  Учтите, что числовые значения должны сортироваться как числа, а не как строки*/
 let table = document.querySelector("table").rows;
-console.log(table);
+console.log(document.querySelector("table"));
 let tableArr = Array.from(table).slice(1);
 console.log(tableArr);
-console.log(tableArr[1].cells[1].innerText);
 
-let tableArrSotr = tableArr.sort((a, b) => {
-  switch (Number(a.cells[2].innerText) == (a.cells[2].innerText)) {
-    case true:
-      if (a.cells[2].innerText - b.cells[2].innerText > 0) return 1;
-      else if (a.cells[2].innerText - b.cells[2].innerText < 0) return -1;
-      return 0;
-      
+document.body.addEventListener("click", e => {
+  console.log(e);
+  let target = e.target;
+  if (target.tagName != "TH") return;
 
-    case false:
-      if (a.cells[2].innerText > b.cells[2].innerText) return 1;
-      else if (a.cells[2].innerText < b.cells[2].innerText) return -1;
-      return 0;
-  }
+  let tableArrSort = tableArr.sort((a, b) => {
+    let i = target.cellIndex;
+    switch (Number(a.cells[i].innerText) == a.cells[i].innerText) {
+      case true:
+        if (a.cells[i].innerText - b.cells[i].innerText > 0) return 1;
+        else if (a.cells[i].innerText - b.cells[i].innerText < 0) return -1;
+        return 0;
+
+      case false:
+        if (a.cells[i].innerText > b.cells[i].innerText) return 1;
+        else if (a.cells[i].innerText < b.cells[i].innerText) return -1;
+        return 0;
+    }
+   
+  });
+  console.log(tableArrSort);
+  document.querySelector("table").append(...tableArrSort); // в учебнике пишут table.tBodies[0].append, как правильно?
 });
-console.log(tableArrSotr);
-document.querySelector("table").tBodies[0].append(...tableArr);
-console.log(tableArrSotr);
