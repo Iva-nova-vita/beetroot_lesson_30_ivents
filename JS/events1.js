@@ -38,7 +38,7 @@ console.log(document.querySelector("table"));
 let tableArr = Array.from(table).slice(1);
 console.log(tableArr);
 
-document.body.addEventListener("click", e => {
+document.querySelector("table").onclick = function(e) {
   console.log(e);
   let target = e.target;
   if (target.tagName != "TH") return;
@@ -60,4 +60,4 @@ document.body.addEventListener("click", e => {
   });
   console.log(tableArrSort);
   document.querySelector("table").append(...tableArrSort); // в учебнике пишут table.tBodies[0].append, как правильно?
-});
+};
